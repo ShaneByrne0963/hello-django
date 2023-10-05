@@ -18,8 +18,24 @@
                     <td>{{ item.name }}</td>
                 {% endif %}
                 <td>
+                    <a href="/toggle/{{ item.id }}">
+                        <button>
+                            {% if not item.done %}
+                                Done
+                            {% else %}
+                                Uncheck
+                            {% endif %}
+                        </button>
+                    </a>
+                </td>
+                <td>
                     <a href="/edit/{{ item.id }}">
                         <button>Edit</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/delete/{{ item.id }}">
+                        <button>Delete</button>
                     </a>
                 </td>
             </tr>
