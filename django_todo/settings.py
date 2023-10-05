@@ -16,7 +16,7 @@ if os.path.exists('env.py'):
     import env
 
 
-development = os.environ.get('DEVELOPMENT', False)
+development = os.environ.get('DEVELOPMENT', 'False')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,12 +29,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+DEBUG = True if development == 'True' else False
 
-ALLOWED_HOSTS = [
-    os.environ.get('HEROKU_HOST_NAME'),
-    '8000-shanebyrne0963-hello-dja-0dh9fdxkda.us2.codeanyapp.com'
-]
+if development == 'True':
+    ALLOWED_HOSTS = [
+        '8000-shanebyrne0963-hello-dja-0dh9fdxkda.us2.codeanyapp.com']
+else:
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOST_NAME')]
 
 
 # Application definition
@@ -83,7 +84,8 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if development:
+DATABASES = {}
+if development == 'True':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
