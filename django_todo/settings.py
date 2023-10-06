@@ -35,7 +35,7 @@ if development == 'True':
     ALLOWED_HOSTS = [
         '8000-shanebyrne0963-hello-dja-0dh9fdxkda.us2.codeanyapp.com']
 else:
-    ALLOWED_HOSTS = ['*']  # [os.environ.get('HEROKU_HOST_NAME')]
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOST_NAME')]
 
 
 # Application definition
