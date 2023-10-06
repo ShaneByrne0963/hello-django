@@ -29,13 +29,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if development == 'True' else False
+DEBUG = development == 'True'
 
 if development == 'True':
     ALLOWED_HOSTS = [
         '8000-shanebyrne0963-hello-dja-0dh9fdxkda.us2.codeanyapp.com']
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOST_NAME')]
+    ALLOWED_HOSTS = ['*']  # [os.environ.get('HEROKU_HOST_NAME')]
 
 
 # Application definition
